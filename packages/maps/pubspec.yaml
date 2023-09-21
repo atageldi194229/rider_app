@@ -1,0 +1,21 @@
+name: maps
+description: Rider Maps
+publish_to: none
+
+environment:
+  sdk: ">=3.0.6 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_map: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+  very_good_analysis: ^5.0.0
+
+flutter:
+  uses-material-design: true

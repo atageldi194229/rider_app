@@ -1,0 +1,104 @@
+{
+  "@@locale": "ru",
+  "login": "Авторизоваться",
+  "@login": {},
+  "password": "Пароль",
+  "@password": {},
+  "phone": "Телефон",
+  "@phone": {},
+  "loginFailure": "Ошибка входа",
+  "@loginFailure": {},
+  "networkError": "Произошла ошибка сети.\nПроверьте подключение и повторите попытку.",
+  "networkErrorButton": "Попробуйте еще раз",
+  "emptyList": "Пустой список",
+  
+  "systemOption": "System",
+  "@systemOption": {
+    "description": "The option to use system-wide theme in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+  "lightModeOption": "Light",
+  "@lightModeOption": {
+    "description": "The option for light mode in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+  "darkModeOption": "Dark",
+  "@darkModeOption": {
+    "description": "The option for dark mode in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+
+  "zoneId": "Зона",
+  "distanceText": "Удаленность",
+  "durationText": "Время пути",
+  "status": "Статус",
+  "startedAt": "Время начала",
+  "completedAt": "Время окончание",
+  "differenceInMinutes": "Время",
+
+  "rides": "Маршруты",
+  "activeRide": "Активный",
+
+  "history": "История",
+  "settings": "Настройки",
+  "logout": "Выйти",
+
+  "start": "Начать",
+  "arrived": "Прибыль",
+  "deliver": "Вручить",
+  "complete": "Завершить",
+  
+  "note": "Примечание",
+  "notes": "Примечания",
+  "orderId": "Номер заказа",
+  "customerName": "Имя Клиента",
+  "customerPhone": "Телефон клиента",
+  "payMethod": "Способ оплаты",
+  "goodsToBeDelivered": "Товары, подлежащие доставке",
+  "totalWeight": "Общий вес",
+  "address": "Адрес",
+  "addressTitle": "Название",
+  "addressBuilding": "Здание",
+  "addressFloor": "Этаж",
+  "addressDoor": "Дверь",
+
+  "cash": "Наличные",
+  "card": "Карта",
+  "other": "Другой",
+  "completePayment": "Завершить платеж",
+
+  "orderProducts": "Заказать продукцию",
+  "orderDetail": "Детали заказа",
+  "rideDetail": "Детали поездки",
+  "reports": "Отчеты",
+
+  "terminalCode": "Код терминала",
+  "cashPaymentAmount": "Сумма платежа наличными",
+  "cardPaymentAmount": "Сумма платежа по карте",
+  "cashChangeAmount": "Сумма сдачи наличных",
+
+  "baseURL": "Базовый URL",
+  "language": "Язык",
+  "restoreDefaultSettings": "Восстановить настройки по умолчанию",
+
+  "saveFailure": "Ошибка сохранения",
+  "saveSucceeded": "Сохранение выполнено",
+
+  "dioConnectionTimeout": "К сожалению, приложению не удалось подключиться к серверу в течение указанного времени. Пожалуйста, проверьте подключение к Интернету и повторите попытку позже. Если проблема не устранена, вы можете обратиться за помощью в нашу службу поддержки. Спасибо за ваше терпение и понимание."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

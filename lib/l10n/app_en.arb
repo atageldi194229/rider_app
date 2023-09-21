@@ -1,0 +1,92 @@
+{
+  "@@locale": "en",
+  "login": "Login",
+  "@login": {},
+  "password": "Password",
+  "@password": {},
+  "phone": "Phone",
+  "@phone": {},
+  "loginFailure": "Login failure",
+  "@loginFailure": {},
+  "networkError": "A network error has occurred.\nCheck your connection and try again.",
+  "networkErrorButton": "Try Again",
+  "emptyList": "Empty list",
+  
+  "systemOption": "System",
+  "@systemOption": {
+    "description": "The option to use system-wide theme in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+  "lightModeOption": "Light",
+  "@lightModeOption": {
+    "description": "The option for light mode in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+  "darkModeOption": "Dark",
+  "@darkModeOption": {
+    "description": "The option for dark mode in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+
+
+  "zoneId": "Zone",
+  "distanceText": "Distance",
+  "durationText": "Duration",
+  "status": "Status",
+  "startedAt": "Started at",
+  "completedAt": "Completed at",
+  "differenceInMinutes": "Difference in minutes",
+
+  "rides": "Rides",
+  "activeRide": "Active",
+
+  "history": "History",
+  "settings": "Settings",
+  "logout": "Logout",
+
+  "start": "Start",
+  "arrived": "Arrived",
+  "deliver": "Deliver",
+  "complete": "Complete",
+
+  "note": "Note",
+  "notes": "Notes",
+  "orderId": "Order ID",
+  "customerName": "Customer name",
+  "customerPhone": "Customer phone",
+  "payMethod": "Pay method",
+  "goodsToBeDelivered": "Goods to be delivered",
+  "totalWeight": "Total weight",
+  "address": "Address",
+  "addressTitle": "Address title",
+  "addressBuilding": "Building",
+  "addressFloor": "Floor",
+  "addressDoor": "Door",
+
+  "cash": "Cash",
+  "card": "Card",
+  "other": "Other",
+  "completePayment": "Complete payment",
+
+  "orderProducts": "Order products",
+  "orderDetail": "Order detail",
+  "rideDetail": "Ride detail",
+  "reports": "Reports",
+
+  "terminalCode": "Terminal code",
+  "cashPaymentAmount": "Cash payment amount",
+  "cardPaymentAmount": "Card payment amount",
+  "cashChangeAmount": "Cash change amount",
+
+  "baseURL": "Base URL",
+  "language": "Language",
+  "restoreDefaultSettings": "Restore default settings",
+
+  "saveFailure": "Save failure",
+  "saveSucceeded": "Save succeeded",
+
+  "dioConnectionTimeout": "Sorry, the app could not connect to the server within the specified time limit. Please check your internet connection and try again later. If the problem persists, you can contact our support team for assistance. Thank you for your patience and understanding."
+}

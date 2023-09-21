@@ -1,0 +1,16 @@
+name: user_repository
+description: User Repository
+publish_to: none
+
+environment:
+  sdk: ">=3.0.6 <4.0.0"
+
+dependencies:
+  data_provider:
+    path: ../data_provider
+  storage:
+    path: ../storage/storage
+
+dev_dependencies:
+  test: ^1.21.4
+  very_good_analysis: ^5.0.0+1

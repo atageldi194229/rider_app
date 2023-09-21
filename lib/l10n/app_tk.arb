@@ -1,0 +1,104 @@
+{
+  "@@locale": "tk",
+  "login": "Giriş",
+  "@login": {},
+  "password": "Parol",
+  "@password": {},
+  "phone": "Telefon",
+  "@phone": {},
+  "loginFailure": "Giriş şowsuzlygy",
+  "@loginFailure": {},
+  "networkError": "Torda ýalňyşlyk ýüze çykdy.\nBaglanyşygyňyzy barlaň we gaýtadan synanyşyň.",
+  "networkErrorButton": "Täzeden synanş",
+  "emptyList": "Boş sanaw",
+  
+  "systemOption": "System",
+  "@systemOption": {
+    "description": "The option to use system-wide theme in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+  "lightModeOption": "Light",
+  "@lightModeOption": {
+    "description": "The option for light mode in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+  "darkModeOption": "Dark",
+  "@darkModeOption": {
+    "description": "The option for dark mode in the theme selector menu",
+    "type": "text",
+    "placeholders": {}
+  },
+
+  "zoneId": "Zona",
+  "distanceText": "Uzakly",
+  "durationText": "Ýol wagty",
+  "status": "Ýagdaýy",
+  "startedAt": "Başlan wagty",
+  "completedAt": "Gutaran wagty",
+  "differenceInMinutes": "Umumy wagty",
+
+  "rides": "Eltip bermeler",
+  "activeRide": "Işjeň",
+
+  "history": "Sargyt taryhy",
+  "settings": "Sazlamar",
+  "logout": "Çykmak",
+
+  "start": "Başla",
+  "arrived": "Geldim",
+  "deliver": "Gowşyr",
+  "complete": "Tamamla",
+  
+  "note": "Bellik",
+  "notes": "Bellikler",
+  "orderId": "Sargyt belgisi",
+  "customerName": "Müşderiniň ady",
+  "customerPhone": "Müşderi telefon belgisi",
+  "payMethod": "Töleg usuly",
+  "goodsToBeDelivered": "Getirilip berilmeli harytlar",
+  "totalWeight": "Jemi agram",
+  "address": "Salgysy",
+  "addressTitle": "Ady",
+  "addressBuilding": "Gurluşyk",
+  "addressFloor": "Gat",
+  "addressDoor": "Gapy",
+
+  "cash": "Nagt",
+  "card": "Kart",
+  "other": "Beýleki",
+  "completePayment": "Tölegi tamamla",
+
+  "orderProducts": "Harytlar",
+  "orderDetail": "Sargyt",
+  "rideDetail": "Eltip berme",
+  "reports": "Hasabatlar",
+
+  "terminalCode": "Terminal kody",
+  "cashPaymentAmount": "Nagt töleginiň mukdary",
+  "cardPaymentAmount": "Kart töleginiň mukdary",
+  "cashChangeAmount": "Gaýtargy mukdary",
+
+  "baseURL": "Esasy URL",
+  "language": "Dil",
+  "restoreDefaultSettings": "Bellenen sazlamalary dikelt",
+
+  "saveFailure": "Ýatda saklandy",
+  "saveSucceeded": "Ýatda saklap bolmady",
+
+  "dioConnectionTimeout": "Bagyşlaň, programma bellenilen möhletde serwere birigip bilmedi. Internet birikmäňizi barlaň we soňrak synanyşyň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Sabyr edeniňiz we düşüneniňiz üçin sag boluň."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
