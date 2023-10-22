@@ -55,12 +55,29 @@ class OrderLinesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lines = orderLines.lines;
+    final itemCount = (lines?.length ?? 0);
 
     return ListView.separated(
       padding: const EdgeInsets.all(UISpacing.md),
-      itemCount: lines?.length ?? 0,
+      itemCount: itemCount + 1,
       separatorBuilder: (_, __) => const SizedBox(height: UISpacing.md),
       itemBuilder: (context, index) {
+        // if item is last
+        if (itemCount == index) {
+          final attributes = orderLines.attributes?.map((e) => (e.name, e.value?.toString()));
+
+          // if attributes is empty show nothing
+          if (attributes == null || attributes.isEmpty) {
+            return const SizedBox();
+          }
+
+          // Attributes container
+          return UIDataAttributes(
+            attributes: attributes,
+          );
+        }
+
+        // Order line item card
         return OrderLinesItemCard(
           line: lines![index],
         );

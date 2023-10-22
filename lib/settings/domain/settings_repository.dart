@@ -45,6 +45,11 @@ final class GetAppLanguageFailure extends SettingsException {
   const GetAppLanguageFailure(super.error);
 }
 
+/// GetAppConfigFailure
+final class GetAppConfigFailure extends SettingsException {
+  const GetAppConfigFailure(super.error);
+}
+
 /// SettingsRepository
 final class SettingsRepository {
   /// SettingsRepository constructor
@@ -141,6 +146,16 @@ final class SettingsRepository {
       await _settingsClient.updateAppPassword(password);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(UpdateAppPasswordFailure(error), stackTrace);
+    }
+  }
+
+  /// Get app config
+  Future<AppConfig> getAppConfig() async {
+    try {
+      final response = await _settingsClient.getAppConfig();
+      return response.data!;
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(GetAppConfigFailure(error), stackTrace);
     }
   }
 }

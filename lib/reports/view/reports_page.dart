@@ -3,6 +3,7 @@ import 'package:asman_rider/reports/reports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:order_repository/order_repository.dart';
+import 'package:rider_ui/rider_ui.dart';
 
 class ReportsPage extends StatelessWidget {
   const ReportsPage({super.key});
@@ -14,7 +15,7 @@ class ReportsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ReportsBloc(
         orderRepository: context.read<OrderRepository>(),
-      )..add(ReportsRequested()),
+      )..add(const ReportsRequested()),
       child: const ReportsView(),
     );
   }
@@ -28,6 +29,13 @@ class ReportsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n.reports),
+        actions: [
+          ReportsFilterAction(
+            onDone: (filter) => context.read<ReportsBloc>().add(ReportsRequested(filter: filter)),
+            onReset: () => context.read<ReportsBloc>().add(const ReportsRequested(filter: ReportsFilter())),
+          ),
+          const SizedBox(width: UISpacing.sm),
+        ],
       ),
       body: const ReportsContent(),
     );

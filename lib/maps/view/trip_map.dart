@@ -8,7 +8,7 @@ class TripMap extends StatefulWidget {
   /// Route constructor to display the widget inside a [Scaffold].
   static Route<void> route({
     l2.LatLng? center,
-    List<l2.LatLng>? polylinePoints,
+    List<List<l2.LatLng>>? polylines,
     List<Marker>? markers,
   }) {
     return PageRouteBuilder<void>(
@@ -18,7 +18,7 @@ class TripMap extends StatefulWidget {
         ),
         body: TripMap(
           center: center,
-          polylinePoints: polylinePoints,
+          polylines: polylines,
           markers: markers,
         ),
       ),
@@ -27,15 +27,15 @@ class TripMap extends StatefulWidget {
 
   const TripMap({
     l2.LatLng? center,
-    List<l2.LatLng>? polylinePoints,
+    List<List<l2.LatLng>>? polylines,
     List<Marker>? markers,
     super.key,
   })  : _center = center ?? kAshgabatCoordinates,
-        _polylinePoints = polylinePoints,
+        _polylines = polylines,
         _markers = markers ?? const [];
 
   final l2.LatLng? _center;
-  final List<l2.LatLng>? _polylinePoints;
+  final List<List<l2.LatLng>>? _polylines;
   final List<Marker> _markers;
 
   @override
@@ -85,17 +85,19 @@ class _TripMapState extends State<TripMap> {
       ),
       children: [
         kTileLayer,
-        if (widget._polylinePoints != null)
+        if (widget._polylines != null)
           PolylineLayer(
-            polylines: [
-              Polyline(
-                color: const Color.fromARGB(255, 14, 51, 106),
-                borderColor: Colors.grey.shade400,
-                borderStrokeWidth: 4,
-                strokeWidth: 3,
-                points: widget._polylinePoints!,
-              ),
-            ],
+            polylines: widget._polylines!
+                .map<Polyline>(
+                  (points) => Polyline(
+                    color: const Color.fromARGB(255, 14, 51, 106),
+                    borderColor: Colors.grey.shade400,
+                    borderStrokeWidth: 4,
+                    strokeWidth: 3,
+                    points: points,
+                  ),
+                )
+                .toList(),
           ),
         if (widget._markers.isNotEmpty)
           MarkerLayer(

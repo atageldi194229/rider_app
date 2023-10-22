@@ -12,6 +12,14 @@ class UIIconsDark extends UIIcon {
   }
 
   @override
+  SvgPicture sklad({double? size, Color? color}) {
+    return super.sklad(
+      color: color ?? UIColors.white,
+      size: size ?? 14,
+    );
+  }
+
+  @override
   SvgPicture splashLogo({double? size, Color? color}) {
     return super.splashLogo(
       color: color ?? UIColors.white,

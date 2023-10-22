@@ -21,12 +21,15 @@ class RideBloc extends Bloc<RideEvent, RideState> {
   final RideRepository _rideRepository;
 
   FutureOr<void> _onRideRequested(RideRequested event, Emitter<RideState> emit) async {
+    if (!state.hasMoreRides) return;
+
     try {
       emit(state.copyWith(status: RideStatus.loading));
 
-      final rides = await _rideRepository.getRides(page: state.page + 1);
+      final response = await _rideRepository.getRides(page: state.page + 1);
+      final rides = response.data!;
       final updatedRides = [...state.rides, ...rides];
-      final hasMoreRides = rides.isNotEmpty;
+      final hasMoreRides = response.meta!.currentPage! < response.meta!.lastPage!;
 
       emit(state.copyWith(
         status: RideStatus.populated,

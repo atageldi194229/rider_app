@@ -29,6 +29,7 @@ class Http extends DioForNative {
       LanguageInterceptor(
         languageProvider: languageProvider,
       ),
+      const AlwaysAcceptApplicationJsonInterceptor(),
       PrettyDioLogger(
         requestHeader: true,
         requestBody: true,

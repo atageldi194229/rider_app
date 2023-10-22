@@ -14,6 +14,7 @@ class UIPhoneTextField extends StatelessWidget {
     this.suffix,
     this.readOnly,
     this.onChanged,
+    this.onSubmitted,
     this.errorText,
   });
 
@@ -31,6 +32,9 @@ class UIPhoneTextField extends StatelessWidget {
 
   /// Called when the user inserts or deletes texts in the text field.
   final ValueChanged<String>? onChanged;
+
+  /// When user done editing
+  final ValueChanged<String>? onSubmitted;
 
   /// Whether the text field should be read-only.
   /// Defaults to false.
@@ -61,6 +65,7 @@ class UIPhoneTextField extends StatelessWidget {
       onChanged: onChanged,
       suffix: suffix,
       errorText: errorText,
+      onSubmitted: onSubmitted,
     );
   }
 }

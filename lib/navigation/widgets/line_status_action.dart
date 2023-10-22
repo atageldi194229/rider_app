@@ -1,3 +1,5 @@
+import 'package:asman_rider/active_ride/active_ride.dart';
+import 'package:asman_rider/config/config.dart';
 import 'package:asman_rider/location_tracker/location_tracker.dart';
 import 'package:asman_rider/navigation/navigation.dart';
 import 'package:asman_rider/profile/profile.dart';
@@ -11,20 +13,23 @@ class LineStatusAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = context.select((LineStatusBloc bloc) => bloc.state);
-    final staff = context.select((ProfileBloc bloc) => bloc.state.riderState);
+    final (staffId, staffWarehouseId) = context.select((ProfileBloc bloc) => (bloc.state.riderState?.id, bloc.state.riderState?.warehouseId));
+    final appConfig = context.select((AppConfigBloc bloc) => bloc.state.appConfig);
+    final activeRideId = context.select((ActiveRideBloc bloc) => bloc.state.rideId);
 
-    if (status == LineStatus.online && staff != null) {
+    if (status == LineStatus.online && staffId != null && staffWarehouseId != null && appConfig != null) {
       context.read<LocationTrackerBloc>().add(LocationTrackerStartRequested(
-            riderId: staff.id!,
-            warehouseId: staff.warehouseId!,
-            sendIntervalInSeconds: staff.config?.grpsSeconds ?? 4,
+            riderId: staffId,
+            warehouseId: staffWarehouseId,
+            activeRideId: activeRideId,
+            sendIntervalInSeconds: appConfig.grpcSeconds ?? 4,
+            grpcUrl: appConfig.grpcUrl!,
           ));
     }
 
-    if (status == LineStatus.offline && staff != null) {
+    if (status == LineStatus.offline) {
       context.read<LocationTrackerBloc>().add(LocationTrackerStopRequested());
     }
-
     return switch (status) {
       LineStatus.online => const OnlineButton(),
       LineStatus.offline => const OfflineButton(),

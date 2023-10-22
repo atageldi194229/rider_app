@@ -17,6 +17,8 @@ class UIActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     /// Try to use slide_to_act
     return SlideAction(
       trackBuilder: (context, state) {
@@ -28,7 +30,7 @@ class UIActionButton extends StatelessWidget {
             side: BorderSide(
               color: Theme.of(context).colorScheme.outlineVariant,
             ),
-            borderRadius: BorderRadius.circular(UISpacing.lg),
+            borderRadius: BorderRadius.circular(UISpacing.sm),
           ),
           child: Center(
             child: Text(
@@ -43,12 +45,17 @@ class UIActionButton extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.all(UISpacing.xs),
           decoration: BoxDecoration(
-            color: UIColors.blue,
-            borderRadius: BorderRadius.circular(UISpacing.md),
+            color: theme.colorScheme.secondaryContainer,
+            borderRadius: BorderRadius.circular(UISpacing.xs),
           ),
           child: Center(
             // Show loading indicator if async operation is being performed
-            child: state.isPerformingAction ? const CupertinoActivityIndicator() : const Icon(Icons.chevron_right),
+            child: state.isPerformingAction
+                ? const CupertinoActivityIndicator(color: Colors.white)
+                : const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white,
+                  ),
           ),
         );
       },

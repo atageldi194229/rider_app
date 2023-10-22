@@ -11,6 +11,16 @@ abstract class UIIcon {
     );
   }
 
+  SvgPicture sklad({double? size, Color? color}) {
+    return Assets.icons.sklad.svg(
+      colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+      fit: BoxFit.cover,
+      clipBehavior: Clip.none,
+      height: size ?? 14,
+      width: size ?? 14,
+    );
+  }
+
   SvgPicture splashLogo({double? size, Color? color}) {
     return Assets.icons.splashLogo.svg(
       colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,

@@ -46,17 +46,23 @@ class GetStateFailure extends UserException {
   const GetStateFailure(super.error);
 }
 
+/// Firebase Token Provider
+typedef FcmTokenProvider = Future<String?> Function();
+
 /// Repository which manages the user domain.
 class UserRepository {
   /// {@macro user_repository}
   UserRepository({
+    required FcmTokenProvider fcmTokenProvider,
     required AuthenticationClient authenticationClient,
     required ProfileClient profileClient,
     required UserStorage storage,
-  })  : _authenticationClient = authenticationClient,
+  })  : _fcmTokenProvider = fcmTokenProvider,
+        _authenticationClient = authenticationClient,
         _profileClient = profileClient,
         _storage = storage;
 
+  final FcmTokenProvider _fcmTokenProvider;
   final AuthenticationClient _authenticationClient;
   final ProfileClient _profileClient;
   final StreamController<User> _userStream = StreamController();
@@ -96,7 +102,11 @@ class UserRepository {
     required String password,
   }) async {
     try {
-      final response = await _authenticationClient.logIn(phone, password);
+      final response = await _authenticationClient.logIn(
+        phone: phone,
+        password: password,
+        deviceToken: await _fcmTokenProvider(),
+      );
       final staff = response.data?.staff;
 
       if (staff != null) {
@@ -121,7 +131,9 @@ class UserRepository {
   /// Throws a [LogOutFailure] if an exception occurs
   Future<void> logOut() async {
     try {
-      await _authenticationClient.logOut();
+      await _authenticationClient.logOut(
+        deviceToken: await _fcmTokenProvider(),
+      );
       _userStream.add(User.anonymous);
       await _storage.clearAppUser();
     } catch (error, stackTrace) {

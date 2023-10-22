@@ -55,7 +55,7 @@ class RideList extends StatelessWidget {
             return const SizedBox();
           }
 
-          return RideContentItem(ride: rides[index]);
+          return RideContentItem2(ride: rides[index]);
         },
       ),
     );

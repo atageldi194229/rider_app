@@ -22,11 +22,15 @@ class ReportsBloc extends Bloc<ReportsEvent, ReportsState> {
     try {
       emit(state.copyWith(status: ReportsStatus.loading));
 
-      final content = await _orderRepository.getDailyOrders();
+      final content = await _orderRepository.getDailyOrders(
+        fromTime: event.filter?.fromTime,
+        toTime: event.filter?.toTime,
+      );
 
       emit(state.copyWith(
         status: ReportsStatus.populated,
         content: content,
+        filter: event.filter,
       ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: ReportsStatus.failure));

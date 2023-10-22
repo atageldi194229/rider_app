@@ -24,7 +24,7 @@ class OrderLinesCompleteAction extends StatelessWidget {
           border: Border.all(
             color: theme.colorScheme.outlineVariant,
           ),
-          color: theme.colorScheme.surface,
+          color: Colors.transparent,
         ),
         child: ClipRRect(
           borderRadius: const BorderRadius.all(radius),
@@ -54,7 +54,8 @@ class OrderLinesCompleteAction extends StatelessWidget {
                       child: Center(
                         child: Text(
                           context.l10n.complete,
-                          style: TextStyle(color: theme.colorScheme.inversePrimary),
+                          // style: TextStyle(color: theme.colorScheme.inversePrimary),
+                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -62,7 +63,12 @@ class OrderLinesCompleteAction extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Center(child: Text("${orderLines.totalText}")),
+                child: Center(
+                  child: Text(
+                    "${orderLines.totalText}",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
             ],
           ),

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:asman_rider/env/env.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:grpc/grpc.dart';
@@ -42,8 +41,10 @@ class LocationTrackerBloc extends Bloc<LocationTrackerEvent, LocationTrackerStat
       ..latitude = locationData.latitude.toString()
       ..longitude = locationData.longitude.toString()
       ..speed = locationData.speed.toString()
+      ..bearing = locationData.heading.toString()
       ..memberId = event.riderId.toString()
-      ..warehouseId = event.warehouseId.toString();
+      ..warehouseId = event.warehouseId.toString()
+      ..tripId = event.activeRideId != null ? event.activeRideId.toString() : "";
 
     _locationStream?.add(request);
   }
@@ -100,8 +101,8 @@ class LocationTrackerBloc extends Bloc<LocationTrackerEvent, LocationTrackerStat
 
       /// start new grpc client
       _channel = ClientChannel(
-        Env.grpcUrl,
-        port: Env.grpcPort,
+        event.grpcUrl.split(':').first,
+        port: int.parse(event.grpcUrl.split(':').last),
         options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
       );
 
@@ -129,7 +130,9 @@ class LocationTrackerBloc extends Bloc<LocationTrackerEvent, LocationTrackerStat
             add(LocationTrackerStartRequested(
               riderId: event.riderId,
               warehouseId: event.warehouseId,
+              activeRideId: event.activeRideId,
               sendIntervalInSeconds: event.sendIntervalInSeconds,
+              grpcUrl: event.grpcUrl,
             ));
           }
         },
@@ -145,7 +148,9 @@ class LocationTrackerBloc extends Bloc<LocationTrackerEvent, LocationTrackerStat
         add(LocationTrackerStartRequested(
           riderId: event.riderId,
           warehouseId: event.warehouseId,
+          activeRideId: event.activeRideId,
           sendIntervalInSeconds: event.sendIntervalInSeconds,
+          grpcUrl: event.grpcUrl,
         ));
       }
     }

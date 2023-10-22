@@ -1,17 +1,16 @@
-# rider_app
+# asman_rider
 
 ## Initialize project
-
-- Create `.env` file using `.env.example` file.
-- Create firebase google-serices.json file and set in the `android/app/` folder.
-- Create Key Store for app and save it in root folder like `upload-keystore.jks`.
-- Don't forget about key.properties file in `android/` folder. Create it also.
 
 ```bash
 flutter pub get
 flutter gen-l10n
 cd packages/data-provider
 dart run build_runner build
+```
+
+```bash
+flutter build apk --release --split-debug-info --obfuscate
 ```
 
 #TODO:

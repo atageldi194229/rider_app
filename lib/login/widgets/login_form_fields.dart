@@ -39,11 +39,11 @@ class _PhoneInputState extends State<_PhoneInput> {
               }
             : null,
       ),
-      errorText: switch (state.phone.displayError) {
-        PhoneValidationError.empty => 'empty',
-        PhoneValidationError.invalid => 'invalid',
-        _ => null,
-      },
+      // errorText: switch (state.phone.displayError) {
+      //   PhoneValidationError.empty => 'empty',
+      //   PhoneValidationError.invalid => 'invalid',
+      //   _ => null,
+      // },
     );
   }
 
@@ -81,7 +81,7 @@ class __PasswordInputState extends State<_PasswordInput> {
     return UIPasswordTextField(
       key: const Key('loginForm_passwordInput_textField'),
       controller: _controller,
-      labelText: 'Password',
+      labelText: context.l10n.password,
       readOnly: state.status.isInProgress,
       suffix: ClearIconButton(
         isVisible: context.select((LoginBloc bloc) => bloc.state.password.value.isNotEmpty),
@@ -92,10 +92,10 @@ class __PasswordInputState extends State<_PasswordInput> {
               }
             : null,
       ),
-      errorText: switch (state.password.displayError) {
-        PasswordValidationError.empty => 'empty',
-        _ => null,
-      },
+      // errorText: switch (state.password.displayError) {
+      //   PasswordValidationError.empty => 'empty',
+      //   _ => null,
+      // },
     );
   }
 

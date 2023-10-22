@@ -10,7 +10,7 @@ abstract class LineStatusFailure with EquatableMixin implements Exception {
   final Object error;
 
   @override
-  List<Object?> get props => [error];
+  List<Object?> get props => [];
 }
 
 /// Thrown when could not get the current line status

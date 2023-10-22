@@ -12,7 +12,7 @@ abstract class OrderFailure with EquatableMixin implements Exception {
   final Object error;
 
   @override
-  List<Object?> get props => [error];
+  List<Object?> get props => [];
 }
 
 /// Thrown when order detail get failure
@@ -79,9 +79,15 @@ class OrderRepository {
   }
 
   /// Get daily order reports
-  Future<List<DailyOrder>> getDailyOrders() async {
+  Future<List<DailyOrder>> getDailyOrders({
+    DateTime? fromTime,
+    DateTime? toTime,
+  }) async {
     try {
-      final response = await _orderClient.getDailyOrders();
+      final response = await _orderClient.getDailyOrders(
+        fromTime: fromTime,
+        toTime: toTime,
+      );
       return response.data!;
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetDailyOrderReportsFailure(error), stackTrace);

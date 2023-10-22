@@ -25,6 +25,10 @@ class RideDetail {
   @JsonKey(name: 'status_trans')
   final String? statusTranslated;
 
+  /// Status color
+  @JsonKey(name: 'status_color')
+  final String? statusColor;
+
   /// Warehouse ID
   @JsonKey(name: 'warehouse_point')
   final Coordinates? warehousePoint;
@@ -42,6 +46,7 @@ class RideDetail {
     this.durationText,
     this.status,
     this.statusTranslated,
+    this.statusColor,
     this.warehousePoint,
     this.orders,
     this.path,

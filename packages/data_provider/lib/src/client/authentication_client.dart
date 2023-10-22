@@ -13,15 +13,17 @@ class AuthenticationClient {
   final TokenStorage _tokenStorage;
 
   /// Log In endpoints using phone and password
-  Future<AuthResponse> logIn(
-    String phone,
-    String password,
-  ) async {
+  Future<AuthResponse> logIn({
+    required String phone,
+    required String password,
+    required String? deviceToken,
+  }) async {
     final response = await _http.post<dynamic>(
       '/api/riders/auth/login',
       data: {
         'phone': phone,
         'password': password,
+        'device_token': deviceToken,
       },
       options: Options(
         contentType: Headers.formUrlEncodedContentType,
@@ -40,8 +42,13 @@ class AuthenticationClient {
   }
 
   /// Log out
-  Future<void> logOut() async {
-    await _http.post<dynamic>('/api/riders/auth/logout');
+  Future<void> logOut({String? deviceToken}) async {
+    await _http.post<dynamic>(
+      '/api/riders/auth/logout',
+      data: {
+        'device_token': deviceToken,
+      },
+    );
 
     await _tokenStorage.clearToken();
   }

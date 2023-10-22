@@ -15,9 +15,20 @@ class Order {
   @JsonKey(name: 'order_id')
   final int? orderId;
 
+  /// Reference
+  final String? reference;
+
   /// Order state
   @JsonKey(name: 'order_state')
   final String? orderState;
+
+  /// Order state translated
+  @JsonKey(name: 'order_state_trans')
+  final String? orderStateTranslated;
+
+  /// Order state color
+  @JsonKey(name: 'order_state_color')
+  final String? orderStateColor;
 
   /// Point status
   @JsonKey(name: 'point_status')
@@ -27,17 +38,29 @@ class Order {
   @JsonKey(name: 'point_status_trans')
   final String? pointStatusTranslation;
 
+  /// Point status color
+  @JsonKey(name: 'point_state_color') // This is not mistaken
+  final String? pointStatusColor;
+
+  /// Total text
+  @JsonKey(name: 'total_text')
+  final String? totalText;
+
+  /// Items count
+  @JsonKey(name: 'items_count')
+  final int? itemsCount;
+
   /// Slot number
   @JsonKey(name: 'slot_number')
   final int? slotNumber;
 
-  /// Distance text
-  @JsonKey(name: 'distance_text')
-  final String? distanceText;
-
   /// Duration text
   @JsonKey(name: 'duration_text')
   final String? durationText;
+
+  /// Distance text
+  @JsonKey(name: 'distance_text')
+  final String? distanceText;
 
   /// Customer name
   @JsonKey(name: 'customer_name')
@@ -51,12 +74,19 @@ class Order {
   @JsonKey(name: 'has_notes')
   final bool? hasNotes;
 
+  /// Notes
+  @JsonKey(name: 'notes')
+  final String? notes;
+
   /// Placed at
   @JsonKey(name: 'placed_at')
   final String? placedAt;
 
   /// Deadline
   final String? deadline;
+
+  /// Is disabled
+  final bool? disabled;
 
   /// Service type MEGA, MINI
   @JsonKey(name: 'service_type')
@@ -69,11 +99,18 @@ class Order {
   final Address? address;
 
   Order({
+    this.reference,
+    this.totalText,
+    this.itemsCount,
+    this.notes,
     this.pointId,
     this.orderId,
     this.orderState,
+    this.orderStateTranslated,
+    this.orderStateColor,
     this.pointStatus,
     this.pointStatusTranslation,
+    this.pointStatusColor,
     this.slotNumber,
     this.distanceText,
     this.durationText,
@@ -82,6 +119,7 @@ class Order {
     this.hasNotes,
     this.placedAt,
     this.deadline,
+    this.disabled,
     this.serviceType,
     this.labels,
     this.address,

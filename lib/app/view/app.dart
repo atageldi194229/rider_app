@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:asman_rider/active_ride/active_ride.dart';
 import 'package:asman_rider/app/app.dart';
 import 'package:asman_rider/authentication/authentication.dart';
+import 'package:asman_rider/config/config.dart';
 import 'package:asman_rider/exception_handler/exception_handler.dart';
 import 'package:asman_rider/l10n/l10n.dart';
 import 'package:asman_rider/language/language.dart';
@@ -64,6 +65,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (_) => ThemeModeBloc()),
           BlocProvider(create: (_) => LanguageBloc(settingsRepository: _settingsRepository)),
           BlocProvider(create: (_) => SettingsBloc(settingsRepository: _settingsRepository)),
+          BlocProvider(create: (_) => AppConfigBloc(settingsRepository: _settingsRepository)..add(AppConfigRequested())),
         ],
         child: MultiBlocListener(
           listeners: [
@@ -126,7 +128,8 @@ class AppView extends StatelessWidget {
               theme: const UITheme().themeData,
               darkTheme: const UIDarkTheme().themeData,
               localizationsDelegates: const [
-                TkMaterialLocalization.delegate,
+                TkMaterialLocalizations.delegate,
+                TkCupertinoLocalizations.delegate,
                 ...AppLocalizations.localizationsDelegates,
               ],
               supportedLocales: AppLocalizations.supportedLocales,

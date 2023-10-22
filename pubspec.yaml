@@ -68,6 +68,7 @@ dependencies:
   device_info_plus: ^9.0.3
   dio: ^5.3.2
   envied: ^0.3.0+3
+  custom_pop_up_menu: ^1.2.4
 
 dev_dependencies:
   flutter_test:

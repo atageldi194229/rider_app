@@ -26,6 +26,7 @@ class UITheme {
       colorScheme: _colorScheme,
       scaffoldBackgroundColor: _colorScheme.background,
       bottomNavigationBarTheme: _bottomNavigationBarTheme,
+      chipTheme: _chipTheme,
     );
   }
 
@@ -57,8 +58,10 @@ class UITheme {
 
   AppBarTheme get _appBarTheme {
     return AppBarTheme(
-      iconTheme: _iconTheme,
-      titleTextStyle: _textTheme.titleLarge,
+      centerTitle: true,
+      // color: Colors.white,
+      iconTheme: _iconTheme.copyWith(color: Colors.white),
+      titleTextStyle: _textTheme.titleLarge?.copyWith(color: Colors.white),
       // elevation: 0,
       // toolbarHeight: 64,
       backgroundColor: _colorScheme.secondaryContainer,
@@ -275,8 +278,11 @@ class UITheme {
         ),
       );
   ChipThemeData get _chipTheme {
-    return const ChipThemeData(
-      backgroundColor: UIColors.transparent,
+    return ChipThemeData(
+      backgroundColor: const Color(0xfff3f6f9),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UISpacing.sm),
+      ),
     );
   }
 }

@@ -11,6 +11,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:rider_ui/rider_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 typedef AppBuilder = Future<Widget> Function(
   FirebaseMessaging firebaseMessaging,
@@ -19,54 +20,57 @@ typedef AppBuilder = Future<Widget> Function(
 );
 
 Future<void> bootstrap(AppBuilder builder) async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize the theme dependencies
-  UITheme.initialize();
-
-  StreamController<Exception> exceptionStream = StreamController();
-
-  await Firebase.initializeApp();
-  // final analyticsRepository = AnalyticsRepository(FirebaseAnalytics.instance);
-
-  final firebaseMessaging = FirebaseMessaging.instance;
-
-  const androidNotificationChannel = AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title
-    description: 'This channel is used for important notifications.', // description
-    importance: Importance.high,
-  );
-
-  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  FirebaseNotificationService(
-    androidNotificationChannel: androidNotificationChannel,
-    firebaseMessaging: firebaseMessaging,
-    flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
-  ).initNotifications();
-
-  final blocObserver = AppBlocObserver(
-    // analyticsRepository: analyticsRepository,
-    exceptionStream: exceptionStream,
-  );
-  Bloc.observer = blocObserver;
-  HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: await getApplicationSupportDirectory(),
-  );
-
-  // if (kDebugMode) {
-  //   await HydratedBloc.storage.clear();
-  // }
-
-  final sharedPreferences = await SharedPreferences.getInstance();
-
-  await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-
   await runZonedGuarded<Future<void>>(
     () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp();
+      // Initialize the theme dependencies
+      UITheme.initialize();
+
+      // Initialize date formatting
+      await initializeDateFormatting();
+
+      StreamController<Exception> exceptionStream = StreamController();
+
+      // final analyticsRepository = AnalyticsRepository(FirebaseAnalytics.instance);
+
+      final firebaseMessaging = FirebaseMessaging.instance;
+
+      const androidNotificationChannel = AndroidNotificationChannel(
+        'high_importance_channel', // id
+        'High Importance Notifications', // title
+        description: 'This channel is used for important notifications.', // description
+        importance: Importance.high,
+      );
+
+      final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+      FirebaseNotificationService(
+        androidNotificationChannel: androidNotificationChannel,
+        firebaseMessaging: firebaseMessaging,
+        flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
+      ).initNotifications();
+
+      final blocObserver = AppBlocObserver(
+        // analyticsRepository: analyticsRepository,
+        exceptionStream: exceptionStream,
+      );
+      Bloc.observer = blocObserver;
+      HydratedBloc.storage = await HydratedStorage.build(
+        storageDirectory: await getApplicationSupportDirectory(),
+      );
+
+      // if (kDebugMode) {
+      //   await HydratedBloc.storage.clear();
+      // }
+
+      final sharedPreferences = await SharedPreferences.getInstance();
+
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+
       // unawaited(MobileAds.instance.initialize());
+
       runApp(
         await builder(
           firebaseMessaging,
@@ -75,6 +79,8 @@ Future<void> bootstrap(AppBuilder builder) async {
         ),
       );
     },
-    FirebaseCrashlytics.instance.recordError,
+    (exception, stackTrace) async {
+      await FirebaseCrashlytics.instance.recordError(exception, stackTrace);
+    },
   );
 }

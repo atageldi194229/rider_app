@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:asman_rider/app/app.dart';
 import 'package:asman_rider/env/env.dart';
 import 'package:asman_rider/main/bootstrap/bootstrap.dart';
@@ -36,6 +38,9 @@ void main() {
       languageProvider: settingsStorage.fetchAppLanguage,
     );
 
+    /// Only for development
+    HttpOverrides.global = MyHttpOverrides();
+
     /// Settings
     final settingsClient = SettingsClient(httpClient: httpClient);
 
@@ -56,6 +61,10 @@ void main() {
     final profileClient = ProfileClient(httpClient: httpClient);
 
     final userRepository = UserRepository(
+      fcmTokenProvider: () async {
+        final String? token = await firebaseMessaging.getToken();
+        return token;
+      },
       authenticationClient: authenticationClient,
       storage: userStorage,
       profileClient: profileClient,

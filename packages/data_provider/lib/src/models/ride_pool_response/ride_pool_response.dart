@@ -9,8 +9,11 @@ part 'ride_pool_response.g.dart';
 class RidePoolResponse {
   final List<Ride>? data;
 
+  final PaginationMeta? meta;
+
   RidePoolResponse({
     this.data,
+    this.meta,
   });
 
   factory RidePoolResponse.fromJson(Map<String, dynamic> json) => _$RidePoolResponseFromJson(json);

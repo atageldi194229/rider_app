@@ -6,11 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_repository/ride_repository.dart';
 
 class RideDetailPage extends StatelessWidget {
-  const RideDetailPage({required this.rideId, super.key});
+  const RideDetailPage({
+    super.key,
+    required this.rideId,
+  });
 
   final int rideId;
 
-  static Route<void> route({required int rideId}) {
+  static Route<void> route({required int rideId, bool? readOnly}) {
     return MaterialPageRoute<void>(builder: (_) => RideDetailPage(rideId: rideId));
   }
 

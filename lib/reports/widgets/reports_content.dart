@@ -1,3 +1,4 @@
+import 'package:asman_rider/l10n/l10n.dart';
 import 'package:asman_rider/network_error/network_error.dart';
 import 'package:asman_rider/reports/reports.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class ReportsContent extends StatelessWidget {
 
     if (status == ReportsStatus.failure) {
       return NetworkError(
-        onRetry: () => context.read<ReportsBloc>().add(ReportsRequested()),
+        onRetry: () => context.read<ReportsBloc>().add(const ReportsRequested()),
       );
     }
 
@@ -23,75 +24,88 @@ class ReportsContent extends StatelessWidget {
     }
 
     if (content != null) {
-      return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
+      return RefreshIndicator(
+        onRefresh: () async => context.read<ReportsBloc>().add(const ReportsRequested()),
         child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: DataTable(
-            columns: const <DataColumn>[
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Day',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+          physics: const AlwaysScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columns: <DataColumn>[
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      context.l10n.reportDate.split(' ').join('\n'),
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
                 ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Count',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      context.l10n.reportOrderCount.split(' ').join('\n'),
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
                 ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Total',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      context.l10n.reportTotalOrder.split(' ').join('\n'),
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
                 ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Sub.Total',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      context.l10n.reportDeliveryCost.split(' ').join('\n'),
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
                 ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Delivery.Cost',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      context.l10n.reportWorkedTime.split(' ').join('\n'),
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
                 ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Discount.Total',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      context.l10n.reportRating.split(' ').join('\n'),
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
                 ),
-              ),
-            ],
-            rows: content
-                .map<DataRow>(
-                  (dailyRide) => DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('${dailyRide.day}')),
-                      DataCell(Text('${dailyRide.count}')),
-                      DataCell(Text('${dailyRide.total}')),
-                      DataCell(Text('${dailyRide.subTotal}')),
-                      DataCell(Text('${dailyRide.deliveryCost}')),
-                      DataCell(Text('${dailyRide.discountTotal}')),
-                    ],
+                DataColumn(
+                  label: Expanded(
+                    child: Text(
+                      context.l10n.reportEarnings.split(' ').join('\n'),
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
-                )
-                .toList(),
+                ),
+              ],
+              rows: content
+                  .map<DataRow>(
+                    (dailyRide) => DataRow(
+                      cells: <DataCell>[
+                        DataCell(Text('${dailyRide.day}')),
+                        DataCell(Text('${dailyRide.count}')),
+                        DataCell(Text('${dailyRide.total}')),
+                        DataCell(Text('${dailyRide.deliveryCost}')),
+                        DataCell(Text('${dailyRide.workingTime}')),
+                        DataCell(Text('${dailyRide.rating}')),
+                        DataCell(Text('${dailyRide.earnings}')),
+                      ],
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
         ),
       );

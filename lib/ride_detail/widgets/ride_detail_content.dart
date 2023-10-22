@@ -26,13 +26,17 @@ class RideDetailContent extends StatelessWidget {
 
     /// Showed when ride detail loaded
     if (rideDetail != null) {
-      return CustomScrollView(
-        slivers: [
-          RideDetailMap(rideDetail: rideDetail),
-          RideDetailInformation(rideDetail: rideDetail),
-          RideDetailContentList(orders: rideDetail.orders ?? []),
-          RideDetailActionButton(rideDetail: rideDetail),
-        ],
+      return RefreshIndicator(
+        onRefresh: () async => context.read<RideDetailBloc>().add(RideDetailRequested()),
+        child: CustomScrollView(
+          slivers: [
+            RideDetailInformation2(rideDetail: rideDetail),
+            RideDetailExtraButtons(rideDetail: rideDetail),
+            // RideDetailMap(rideDetail: rideDetail),
+            RideDetailContentList(rideDetail: rideDetail),
+            RideDetailActionButton(rideDetail: rideDetail),
+          ],
+        ),
       );
     }
 

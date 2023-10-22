@@ -1,4 +1,5 @@
 // ignore_for_file: sort_constructors_first, public_member_api_docs, lines_longer_than_80_chars
+import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -14,6 +15,12 @@ class OrderLines extends Equatable {
   final String? status;
 
   final String? state;
+
+  @JsonKey(name: 'state_trans')
+  final String? stateTranslated;
+
+  @JsonKey(name: 'state_color')
+  final String? stateColor;
 
   final String? reference;
 
@@ -39,11 +46,15 @@ class OrderLines extends Equatable {
 
   final List<Line>? lines;
 
+  final List<OrderDetailAttribute>? attributes;
+
   const OrderLines({
     this.id,
     this.customerId,
     this.status,
     this.state,
+    this.stateTranslated,
+    this.stateColor,
     this.reference,
     this.isPayed,
     this.payMethod,
@@ -53,6 +64,7 @@ class OrderLines extends Equatable {
     this.totalText,
     this.linesCount,
     this.lines,
+    this.attributes,
   });
 
   factory OrderLines.fromJson(Map<String, dynamic> json) => _$OrderLinesFromJson(json);
@@ -64,6 +76,8 @@ class OrderLines extends Equatable {
         customerId,
         status,
         state,
+        stateTranslated,
+        stateColor,
         reference,
         isPayed,
         payMethod,
@@ -73,6 +87,7 @@ class OrderLines extends Equatable {
         totalText,
         linesCount,
         lines,
+        attributes,
       ];
 
   OrderLines copyWith({
@@ -80,6 +95,8 @@ class OrderLines extends Equatable {
     int? customerId,
     String? status,
     String? state,
+    String? stateTranslated,
+    String? stateColor,
     String? reference,
     bool? isPayed,
     String? payMethod,
@@ -89,12 +106,15 @@ class OrderLines extends Equatable {
     String? totalText,
     int? linesCount,
     List<Line>? lines,
+    List<OrderDetailAttribute>? attributes,
   }) {
     return OrderLines(
       id: id ?? this.id,
       customerId: customerId ?? this.customerId,
       status: status ?? this.status,
       state: state ?? this.state,
+      stateTranslated: stateTranslated ?? this.stateTranslated,
+      stateColor: stateColor ?? this.stateColor,
       reference: reference ?? this.reference,
       isPayed: isPayed ?? this.isPayed,
       payMethod: payMethod ?? this.payMethod,
@@ -104,6 +124,7 @@ class OrderLines extends Equatable {
       totalText: totalText ?? this.totalText,
       linesCount: linesCount ?? this.linesCount,
       lines: lines ?? this.lines,
+      attributes: attributes ?? this.attributes,
     );
   }
 }

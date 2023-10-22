@@ -27,7 +27,7 @@ class ExceptionHandlerBloc extends Bloc<ExceptionHandlerEvent, ExceptionHandlerS
     final error = event.error;
 
     if (state.error != error) {
-      String title = error.runtimeType.toString();
+      // String title = error.runtimeType.toString();
       String content = error.toString();
       DioException? dioException;
 
@@ -77,14 +77,14 @@ class ExceptionHandlerBloc extends Bloc<ExceptionHandlerEvent, ExceptionHandlerS
       /// DioException badResponse
       if (dioException?.type == DioExceptionType.badResponse) {
         try {
-          // title = dioException?.response?.data['error'];
-          title = dioException?.response?.data['message'] ?? content;
+          // title = dioException?.response?.data['message'] ?? content;
+          content = dioException?.response?.data['message'] ?? content;
         } catch (_) {}
       }
 
       emit(ExceptionHandlerState(
         error: error,
-        title: title,
+        // title: title,
         content: content,
         dioException: dioException,
       ));

@@ -81,8 +81,8 @@ int? _activeRideIdFromJson(Map<String, dynamic> m) {
 ///
 /// [grpsSeconds] interval seconds to send the current location
 @JsonSerializable()
-class RiderConfiguration {
-  RiderConfiguration({
+class RiderConfiguration extends Equatable {
+  const RiderConfiguration({
     this.grpsSeconds,
   });
 
@@ -90,4 +90,7 @@ class RiderConfiguration {
 
   factory RiderConfiguration.fromJson(Map<String, dynamic> json) => _$RiderConfigurationFromJson(json);
   Map<String, dynamic> toJson() => _$RiderConfigurationToJson(this);
+
+  @override
+  List<Object?> get props => [grpsSeconds];
 }

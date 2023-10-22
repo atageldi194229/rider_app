@@ -1,6 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:data_provider/data_provider.dart';
+import 'package:intl/intl.dart';
 
 /// Line status client of user
 class OrderClient {
@@ -41,9 +42,16 @@ class OrderClient {
   }
 
   /// Gets daily reports of order
-  Future<DailyOrderResponse> getDailyOrders() async {
+  Future<DailyOrderResponse> getDailyOrders({
+    DateTime? fromTime,
+    DateTime? toTime,
+  }) async {
     final response = await _http.get<Map<String, dynamic>>(
       '/api/riders/report/daily-orders',
+      queryParameters: {
+        if (fromTime != null) 'from_dt': DateFormat('yyyy-MM-dd').format(fromTime),
+        if (toTime != null) 'to_dt': DateFormat('yyyy-MM-dd').format(toTime),
+      },
     );
 
     return DailyOrderResponse.fromJson(response.data!);

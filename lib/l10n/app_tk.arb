@@ -61,9 +61,9 @@
   "totalWeight": "Jemi agram",
   "address": "Salgysy",
   "addressTitle": "Ady",
-  "addressBuilding": "Gurluşyk",
+  "addressBuilding": "Jaý",
   "addressFloor": "Gat",
-  "addressDoor": "Gapy",
+  "addressDoor": "Otag",
 
   "cash": "Nagt",
   "card": "Kart",
@@ -87,7 +87,32 @@
   "saveFailure": "Ýatda saklandy",
   "saveSucceeded": "Ýatda saklap bolmady",
 
-  "dioConnectionTimeout": "Bagyşlaň, programma bellenilen möhletde serwere birigip bilmedi. Internet birikmäňizi barlaň we soňrak synanyşyň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Sabyr edeniňiz we düşüneniňiz üçin sag boluň."
+  "dioConnectionTimeout": "Bagyşlaň, programma bellenilen möhletde serwere birigip bilmedi. Internet birikmäňizi barlaň we soňrak synanyşyň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Sabyr edeniňiz we düşüneniňiz üçin sag boluň.",
+  "dioSendTimeout": "Bagyşlaň, programma bellenilen möhletde serwere maglumat iberip bilmedi. Internet birikmäňizi barlaň we soňrak synanyşyň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Sabyr edeniňiz we düşüneniňiz üçin sag boluň.",
+  "dioReceiveTimeout": "Bagyşlaň, programma bellenilen möhletde serwerden maglumat alyp bilmedi. Internet birikmäňizi barlaň we soňrak synanyşyň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Sabyr edeniňiz we düşüneniňiz üçin sag boluň.",
+  "dioBadCertificate": "Bagyşlaň, programma nädogry ýa-da ynamsyz SSL şahadatnamasy sebäpli serwer bilen ygtybarly baglanyşyk gurup bilmedi. Tor sazlamalaryňyzy barlaň we ygtybarly sahypa girýändigiňize göz ýetiriň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Howpsuzlygyňyz we gizlinligiňiz üçin sag boluň.",
+  "dioBadResponse": "Bagyşlaň, programma säwlik ýa-da mesele sebäpli serwerden jogap alyp bilmedi. Giriş maglumatlaryňyzy barlaň we dogrudygyna göz ýetiriň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Hyzmatdaşlygyňyz we pikirleriňiz üçin sag boluň.",
+  "dioCancel": "Bagyşlaň, programma haýyşyňyz gutarmanka ýatyrdy. Tor birikdirmäňizi barlaň we haýyşyňyzy işleýän mahaly programmany kesmäň ýa-da ýapmaň. Islegiňizi gaýtadan synanyşmak isleseňiz, häzir ýerine ýetiriň. Sabyr edeniňiz we düşüneniňiz üçin sag boluň.",
+  "dioConnectionError": "Bagyşlaň, programma serwer bilen aragatnaşyk saklaýarka ulgam ýalňyşlygy ýa-da bökdençlik bilen ýüzbe-ýüz boldy. Internet birikmäňizi barlaň we durnukly we ygtybarlydygyna göz ýetiriň. Mesele dowam etse, kömek üçin goldaw toparymyza ýüz tutup bilersiňiz. Sabyr edeniňiz we düşüneniňiz üçin sag boluň.",
+  "dioUnknown": "Bagyşlaň, programma kesgitläp ýa-da dolandyryp bilmeýän näbelli ýa-da garaşylmadyk ýalňyşlyk bilen ýüzbe-ýüz boldy. Bu ýalňyşlygy mümkin boldugyça gysga wagtda derňäp we düzedip biler ýaly goldaw toparymyza mümkin boldugyça jikme-jik habar bermegiňizi haýyş edýäris. Hyzmatdaşlygyňyz we pikirleriňiz üçin sag boluň.",
+
+  "reportDate": "Sene",
+  "reportOrderCount": "Sargyt sany",
+  "reportTotalOrder": "Umumy satyş",
+  "reportDeliveryCost": "Eltip bermek bahasy",
+  "reportWorkedTime": "Işlenen wagt",
+  "reportRating": "Reýting",
+  "reportEarnings": "Gazanan",
+
+  "call": "Jaň et",
+  "navigate": "Ýol gur",
+  "cancel": "Ýap",
+  "tryAgain": "Täzeden",
+
+  "from": "Başlap",
+  "to": "Çenli",
+  "reset": "Poz",
+  "ok": "Bolýar"
 }
 
 

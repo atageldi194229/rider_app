@@ -37,6 +37,14 @@ class Ride {
   /// Status
   final RideStatus? status;
 
+  /// Status translated
+  @JsonKey(name: 'status_trans')
+  final String? statusTranslated;
+
+  /// Status color
+  @JsonKey(name: 'status_color')
+  final String? statusColor;
+
   /// Points count
   @JsonKey(name: 'points_count')
   final int? pointsCount;
@@ -69,6 +77,8 @@ class Ride {
     this.distanceText,
     this.durationText,
     this.status,
+    this.statusTranslated,
+    this.statusColor,
     this.pointsCount,
     this.estimatedAt,
     this.createdAt,
@@ -87,6 +97,14 @@ class RidePoint {
   /// ID
   final int? id;
 
+  final String? reference;
+
+  @JsonKey(name: 'order_state_trans')
+  final String? orderStateTranslated;
+
+  @JsonKey(name: 'order_state_color')
+  final String? orderStateColor;
+
   /// Deadline
   final DateTime? deadline;
 
@@ -95,6 +113,9 @@ class RidePoint {
 
   RidePoint({
     this.id,
+    this.reference,
+    this.orderStateTranslated,
+    this.orderStateColor,
     this.deadline,
     this.address,
   });

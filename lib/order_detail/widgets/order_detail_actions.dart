@@ -20,7 +20,7 @@ class OrderDetailActions extends StatelessWidget {
 
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.all(UISpacing.md).copyWith(top: 0),
+        padding: const EdgeInsets.all(UISpacing.lg).copyWith(top: 0),
         child: Column(
           children: [
             if (isActionsEnabled) ...[

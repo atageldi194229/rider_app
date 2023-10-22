@@ -20,8 +20,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     // Only in debug mode
     if (kDebugMode) {
-      add(const LoginPhoneChanged('99365711268'));
-      // add(const LoginPhoneChanged('99365699982'));
+      add(const LoginPhoneChanged('99365027978'));
+      // add(const LoginPhoneChanged('99364809000'));
       // add(const LoginPhoneChanged('99365535818'));
       add(const LoginPasswordChanged('123123'));
     }

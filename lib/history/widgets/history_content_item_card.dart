@@ -1,3 +1,4 @@
+import 'package:asman_rider/history/view/history_orders_dialog.dart';
 import 'package:asman_rider/l10n/l10n.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,18 @@ class HistoryContentItemCard extends StatelessWidget {
       context.l10n.distanceText: "${historyItem.distanceText}",
       context.l10n.durationText: "${historyItem.durationText}",
       context.l10n.status: "${historyItem.statusTrans}",
-      context.l10n.startedAt: DateFormat('yyyy-MM-dd hh:mm').format(historyItem.startedAt!),
-      context.l10n.completedAt: DateFormat('yyyy-MM-dd hh:mm').format(historyItem.completedAt!),
+      context.l10n.startedAt: DateFormat('yyyy-MM-dd hh:mm', context.l10n.localeName).format(historyItem.startedAt!),
+      context.l10n.completedAt: DateFormat('yyyy-MM-dd hh:mm', context.l10n.localeName).format(historyItem.completedAt!),
       context.l10n.differenceInMinutes: "${historyItem.diffInMin}",
     };
 
     return UICard(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (_) => HistoryOrdersDialog(rideId: historyItem.id!),
+        );
+      },
       child: ListView.separated(
         padding: const EdgeInsets.all(UISpacing.lg),
         physics: const NeverScrollableScrollPhysics(),

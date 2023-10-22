@@ -18,6 +18,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     on<SettingsDefaultSettingsRestored>(_onDefaultSettingsRestored);
     on<SettingsDeviceTokenUpdated>(_onDeviceTokenUpdated);
     on<SettingsPasswordChanged>(_onPasswordChanged);
+
+    // initialize, get base url from phone storage
+    _settingsRepository.getBaseUrl().then((value) => add(SettingsBaseUrlChanged(value)));
   }
 
   final SettingsRepository _settingsRepository;
@@ -26,7 +29,10 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     try {
       emit(state.copyWith(status: SettingsStatus.updating));
       await _settingsRepository.updateBaseUrl(event.baseUrl);
-      emit(state.copyWith(status: SettingsStatus.updatingSucceeded));
+      emit(state.copyWith(
+        status: SettingsStatus.updatingSucceeded,
+        baseUrl: event.baseUrl != null ? BaseUrl.dirty(event.baseUrl!) : null,
+      ));
     } catch (error, stackTrace) {
       emit(state.copyWith(status: SettingsStatus.updatingFailure));
       addError(error, stackTrace);

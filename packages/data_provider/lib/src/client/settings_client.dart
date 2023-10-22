@@ -48,4 +48,10 @@ class SettingsClient {
       },
     );
   }
+
+  /// Get app config
+  Future<AppConfigResponse> getAppConfig() async {
+    final response = await _http.get<Map<String, dynamic>>('/api/riders/config');
+    return AppConfigResponse.fromJson(response.data!);
+  }
 }

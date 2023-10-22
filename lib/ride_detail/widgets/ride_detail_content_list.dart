@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:rider_ui/rider_ui.dart';
 
 class RideDetailContentList extends StatelessWidget {
-  const RideDetailContentList({required this.orders, super.key});
+  const RideDetailContentList({required this.rideDetail, super.key});
 
-  final List<Order> orders;
+  final RideDetail rideDetail;
 
   @override
   Widget build(BuildContext context) {
+    final orders = rideDetail.orders ?? [];
+
     return SliverPadding(
       padding: const EdgeInsets.all(UISpacing.lg),
       sliver: SliverList.separated(
@@ -17,6 +19,7 @@ class RideDetailContentList extends StatelessWidget {
         itemBuilder: (context, index) {
           return OrderItemCard(
             order: orders[index],
+            rideId: rideDetail.id!,
           );
         },
         separatorBuilder: (_, __) => const SizedBox(height: UISpacing.lg),

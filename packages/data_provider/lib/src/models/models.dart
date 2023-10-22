@@ -1,4 +1,6 @@
 export 'address/address.dart';
+export 'app_config/app_config.dart';
+export 'app_config_response/app_config_response.dart';
 export 'auth_response/auth_response.dart';
 export 'authentication_user/authentication_user.dart';
 export 'coordinates/coordinates.dart';
@@ -14,6 +16,7 @@ export 'order_detail/order_detail.dart';
 export 'order_detail_response/order_detail_response.dart';
 export 'order_lines/order_lines.dart';
 export 'order_lines_response/order_lines_response.dart';
+export 'pagination_meta/pagination_meta.dart';
 export 'ride/ride.dart';
 export 'ride_detail/ride_detail.dart';
 export 'ride_detail_response/ride_detail_response.dart';

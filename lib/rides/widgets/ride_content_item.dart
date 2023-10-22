@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:asman_rider/l10n/l10n.dart';
 import 'package:asman_rider/ride_detail/ride_detail.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class RideContentItem extends StatelessWidget {
             (point) => buildOrderRow(
               context,
               point.address,
-              DateFormat(DateFormat.HOUR24_MINUTE).format(point.deadline!),
+              DateFormat(DateFormat.HOUR24_MINUTE, context.l10n.localeName).format(point.deadline!),
             ),
           ),
         ],
@@ -167,7 +168,7 @@ class _RideDeadlineViewState extends State<_RideDeadlineView> {
           color: theme.colorScheme.primary,
         ),
         const SizedBox(width: UISpacing.md),
-        Text(DateFormat(DateFormat.HOUR24_MINUTE).format(dt1)),
+        Text(DateFormat(DateFormat.HOUR24_MINUTE, context.l10n.localeName).format(dt1)),
         const SizedBox(width: UISpacing.md),
         Expanded(
           child: LinearProgressIndicator(
@@ -177,7 +178,7 @@ class _RideDeadlineViewState extends State<_RideDeadlineView> {
           ),
         ),
         const SizedBox(width: UISpacing.md),
-        Text(DateFormat(DateFormat.HOUR24_MINUTE).format(dt2)),
+        Text(DateFormat(DateFormat.HOUR24_MINUTE, context.l10n.localeName).format(dt2)),
         const SizedBox(width: UISpacing.md),
         Icon(
           Icons.flag,

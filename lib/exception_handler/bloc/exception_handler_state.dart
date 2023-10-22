@@ -16,5 +16,5 @@ class ExceptionHandlerState extends Equatable {
   final DioException? dioException;
 
   @override
-  List<Object?> get props => [error, title, content, dioException];
+  List<Object?> get props => [error, content, dioException]; // title not used, so we removed it
 }

@@ -135,6 +135,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/iconsLight.txt
   String get iconsLight => 'packages/rider_ui/assets/icons/iconsLight.txt';
 
+  /// File path: assets/icons/sklad.svg
+  SvgGenImage get sklad => const SvgGenImage('assets/icons/sklad.svg');
+
   /// File path: assets/icons/splash_logo.svg
   SvgGenImage get splashLogo =>
       const SvgGenImage('assets/icons/splash_logo.svg');
@@ -147,6 +150,7 @@ class $AssetsIconsGen {
         icons,
         iconsDark,
         iconsLight,
+        sklad,
         splashLogo
       ];
 }

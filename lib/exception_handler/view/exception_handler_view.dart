@@ -18,6 +18,20 @@ class ExceptionHandlerView extends StatelessWidget {
           String title = state.title;
           String content = state.content;
 
+          if (state.dioException != null) {
+            content = switch (state.dioException?.type) {
+              DioExceptionType.connectionTimeout => context.l10n.networkError,
+              DioExceptionType.sendTimeout => context.l10n.networkError,
+              DioExceptionType.receiveTimeout => context.l10n.networkError,
+              DioExceptionType.badCertificate => context.l10n.networkError,
+              DioExceptionType.connectionError => context.l10n.networkError,
+              DioExceptionType.cancel => context.l10n.networkError,
+              DioExceptionType.unknown => context.l10n.networkError,
+              DioExceptionType.badResponse => content,
+              _ => content,
+            };
+          }
+
           if (state.dioException?.type == DioExceptionType.connectionTimeout) {
             content = context.l10n.dioConnectionTimeout;
           }

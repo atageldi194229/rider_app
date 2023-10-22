@@ -10,7 +10,7 @@ abstract class RideFailure with EquatableMixin implements Exception {
   final Object error;
 
   @override
-  List<Object?> get props => [error];
+  List<Object?> get props => [];
 }
 
 /// Thrown when rides get failure
@@ -77,10 +77,10 @@ class RideRepository {
   final RideClient _rideClient;
 
   /// To fetch rides or trips in other words
-  Future<List<Ride>> getRides({int? page}) async {
+  Future<RidePoolResponse> getRides({int? page}) async {
     try {
       final response = await _rideClient.pool(page: page);
-      return response.data!;
+      return response;
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetRidesFailure(error), stackTrace);
     }

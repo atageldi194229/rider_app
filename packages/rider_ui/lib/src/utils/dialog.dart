@@ -11,21 +11,25 @@ class UtilDialog {
     String title = "title",
     String content = "",
     String tryAgainText = "tryAgain",
+    String cancelText = "cancel",
   }) {
     return showDialog<bool>(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(
-            title,
-            style: Theme.of(context).textTheme.titleLarge,
+          title: Center(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
           ),
           content: Text(content),
+          actionsAlignment: MainAxisAlignment.spaceAround,
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, false),
               child: Text(
-                MaterialLocalizations.of(context).cancelButtonLabel,
+                cancelText,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),

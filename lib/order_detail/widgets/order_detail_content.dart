@@ -24,11 +24,15 @@ class OrderDetailContent extends StatelessWidget {
 
     // status == OrderDetailStatus.populated
     if (orderDetail != null) {
-      return CustomScrollView(
-        slivers: [
-          OrderDetailDescription(orderDetail: orderDetail),
-          OrderDetailActions(orderDetail: orderDetail),
-        ],
+      return RefreshIndicator(
+        onRefresh: () async => context.read<OrderDetailBloc>().add(OrderDetailRequested()),
+        child: CustomScrollView(
+          slivers: [
+            OrderDetailContentHeader(orderDetail: orderDetail),
+            OrderDetailDescription(orderDetail: orderDetail),
+            OrderDetailActions(orderDetail: orderDetail),
+          ],
+        ),
       );
     }
 

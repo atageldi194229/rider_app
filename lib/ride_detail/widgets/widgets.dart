@@ -4,4 +4,6 @@ export 'ride_detail_action_buttton.dart';
 export 'ride_detail_content.dart';
 export 'ride_detail_content_list.dart';
 export 'ride_detail_information.dart';
+export 'ride_detail_information_2.dart';
 export 'ride_detail_map.dart';
+export 'ride_detail_extra_buttons.dart';

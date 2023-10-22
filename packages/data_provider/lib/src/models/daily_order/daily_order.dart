@@ -15,6 +15,9 @@ class DailyOrder {
     this.subTotal,
     this.total,
     this.deliveryCost,
+    this.workingTime,
+    this.rating,
+    this.earnings,
   );
 
   /// Day
@@ -38,10 +41,12 @@ class DailyOrder {
   @JsonKey(name: 'delivery_cost')
   final String? deliveryCost;
 
-  // @JsonKey(name: 'working_time')
-  // final int? workingTime;
+  @JsonKey(name: 'working_time')
+  final double? workingTime;
 
-  // final int? earnings;
+  final String? rating;
+
+  final double? earnings;
 
   factory DailyOrder.fromJson(Map<String, dynamic> json) => _$DailyOrderFromJson(json);
   Map<String, dynamic> toJson() => _$DailyOrderToJson(this);

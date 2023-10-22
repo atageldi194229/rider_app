@@ -10,3 +10,8 @@ export 'rider_action_button.dart';
 export 'rider_card.dart';
 export 'rider_data_row.dart';
 export 'rider_dotted_ui.dart';
+export 'rider_badge.dart';
+export 'rider_chip.dart';
+export 'rider_icon_button.dart';
+export 'rider_tappable_form_field.dart';
+export 'rider_data_attributes.dart';

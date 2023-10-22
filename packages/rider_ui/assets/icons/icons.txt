@@ -1,5 +1,7 @@
 SvgPicture emailOutline({double? size, Color? color}) { return Assets.icons.emailOutline.svg( colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null, height: size ?? 14, width: size ?? 14,); }
 
+SvgPicture sklad({double? size, Color? color}) { return Assets.icons.sklad.svg( colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null, height: size ?? 14, width: size ?? 14,); }
+
 SvgPicture splashLogo({double? size, Color? color}) { return Assets.icons.splashLogo.svg( colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null, height: size ?? 14, width: size ?? 14,); }
 
 SvgPicture backIcon({double? size, Color? color}) { return Assets.icons.backIcon.svg( colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null, height: size ?? 14, width: size ?? 14,); }
